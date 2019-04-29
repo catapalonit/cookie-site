@@ -35,19 +35,6 @@
     h1 {
     color: aqua;
     }
-
-    
-    @media (min-width: 999px) { /* WHEN SCREEN BIG */
-    ul {
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 400;
-    height: 100;
-    width: 40vw;
-    }
-    }
     
     @media (max-width: 1000px) { /* WHEN SCREEN SMALL */
     .Menu-button {
@@ -59,19 +46,16 @@
     padding-left: 10px;
     font-size: 20px;
     }
-    // .ul,
-    // .drop-down-closed {
-    // display: none;
-    // }
+   
     .drop-down-open {
     width: 100vw;
-    height: 10vh;
     position: absolute;
     top: 9vh;
     left: 0px;
     display: flex;
     justify-content: center;
     animation: openMenu 1s;
+    // background: black; //DELETE THIS IS YOU MAKE THE BACKGROUND A COLOR -- background is in app.scss
     }
     .drop-down-closed {
     width: 100vw;
@@ -84,12 +68,16 @@
     .drop-down-list {
     width: 80vw;
     display: flex;
-    flex-direction: row;
+    padding-left: 0px;
     justify-content: space-between;
-    align-items: center;
-  
+    }
+
+    a {
+        color: white;
     }
     }
+
+
     @keyframes openMenu {
     from {
     transform: translateY(0vh);
@@ -100,10 +88,10 @@
     }
     @keyframes closeMenu {
     from {
-    transform: translateY(2vh);
+    transform: translateY(0vh);
     }
     to {
-    transform: translateY(0vh);
+    transform: translateY(10vh);
     }
     }
     

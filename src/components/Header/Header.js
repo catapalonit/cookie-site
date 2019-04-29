@@ -19,7 +19,6 @@ export default class Header extends Component {
             this.setState({
                 menuStatus: 'open'
             })
-            console.log("hit")
         }
     }
     render() {
@@ -34,16 +33,14 @@ export default class Header extends Component {
                         <h6>MENU</h6>
                         <img
                             src="https://cdn2.iconfinder.com/data/icons/mobile-banking-ver-3a/100/1-48-512.png"
-                            alt="Hamburger Button"
+                            alt="Menu Button"
                         />
                     </div>
-                    {/* <div> */}
                     <ul>
                         <a href="/Login">LOGIN</a>
                         <a href="/Register">REGISTER</a>
                         <a href="/Cart">CART</a>
                     </ul>
-                    {/* </div> */}
                     <div className={"drop-down-" + this.state.menuStatus}>
                         <ul className="drop-down-list">
                             <a href="/Login">LOGIN</a>
