@@ -1,0 +1,125 @@
+
+    ul,
+    .drop-down-closed {
+    display: none;
+    }
+
+    a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    }
+
+    .Menu-button {
+    display: none;
+    background: aqua;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    img {
+    max-height: 50px;
+    max-width: 50px;
+    }
+
+    nav {
+    display: flex;
+    background: rgb(56, 56, 56);
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    position: fixed;
+    width: 100vw;
+    }
+
+    h1 {
+    color: aqua;
+    }
+
+    
+    @media (min-width: 999px) { /* WHEN SCREEN BIG */
+    ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    height: 100;
+    width: 40vw;
+    }
+    }
+    
+    @media (max-width: 1000px) { /* WHEN SCREEN SMALL */
+    .Menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 20px;
+    }
+    // .ul,
+    // .drop-down-closed {
+    // display: none;
+    // }
+    .drop-down-open {
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    top: 9vh;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    animation: openMenu 1s;
+    }
+    .drop-down-closed {
+    width: 100vw;
+    height: 0vh;
+    position: absolute;
+    top: 9vh;
+    left: 0px;
+    animation: closeMenu 1s;
+    }
+    .drop-down-list {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+    }
+    }
+    @keyframes openMenu {
+    from {
+    transform: translateY(0vh);
+    }
+    to {
+    transform: translateY(2vh);
+    }
+    }
+    @keyframes closeMenu {
+    from {
+    transform: translateY(2vh);
+    }
+    to {
+    transform: translateY(0vh);
+    }
+    }
+    
+    
+    @media (min-width: 999px) { /* WHEN SCREEN BIG */
+    ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    height: 100;
+    width: 40vw;
+    }
+    
+    .drop-down-list {
+    display: none;
+    }
+    }

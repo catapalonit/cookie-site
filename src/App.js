@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { HashRouter } from 'react-router-dom'
+import Header from './components/Header/Header'
 
 
 
@@ -10,8 +11,9 @@ class App extends Component {
       <HashRouter>
 
         <div className="App">
-          HELLO
-      </div>
+          <Header />
+
+        </div>
 
       </HashRouter>
     );
