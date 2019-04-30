@@ -3,6 +3,7 @@ import './App.scss';
 import { HashRouter } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
+import cookies from "./components/Data/Cookies"
 
 
 
@@ -13,7 +14,7 @@ class App extends Component {
 
         <div className="App">
           <Header />
-          <Main />
+          <Main cookies={cookies} />
 
         </div>
 

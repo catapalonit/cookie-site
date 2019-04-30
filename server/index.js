@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const app = express();
 const massive = require('massive');
+const productsController = require('./controllers/productsController')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 
 
@@ -16,14 +17,20 @@ app.use(
     })
 );
 
-massive(CONNECTION_STRING).then(db => {
-    app.set('db', db);
+massive(CONNECTION_STRING).then(dbInstance => {
+    app.set('db', dbInstance);
     console.log('db connected');
-});
+}).catch(err => console.log(err));
 
 // app.use(checkForSession);
 
 // Endpoints
+app.post('/api/products', productsController.create);
+app.get('/api/products', productsController.getAll);
+app.get('/api/products/:id', productsController.getOne);
+app.put('/api/products/:id', productsController.update);
+app.delete('/api/products/:id', productsController.delete);
+
 
 
 app.listen(SERVER_PORT, () => {

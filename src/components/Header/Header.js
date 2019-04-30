@@ -41,7 +41,7 @@ export default class Header extends Component {
                         <a href="/Register">REGISTER</a>
                         <a href="/Cart">CART</a>
                     </ul>
-                    <div className={"drop-down-" + this.state.menuStatus}>
+                    <div className={"drop-down-" + this.state.menuStatus}> {/* set to only display when menuStatus is open  */}
                         <ul className="drop-down-list">
                             <a href="/Login">LOGIN</a>
                             <a href="/Register">REGISTER</a>

@@ -8,9 +8,14 @@ img {
 }
 .Main {
     display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
 }
 .Card {
     background: white;
     min-width: 20vw;
+    border: 1px solid red;
+    padding: 30px;
+    
 
 }
