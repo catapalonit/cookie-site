@@ -1,18 +1,22 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
-import Login from './components/Login/Login';
-import Header from './components/Header/Header'
 import Main from './components/Main/Main'
-// import Data from "./components/Data/Data"
-// import Checkout from './components/Checkout/Checkout';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Cart from "./components/Cart/Cart"
+import Contact from './components/Contact/Contact';
+
+
 
 export default (
     <Switch>
-        <Header />
-        {/* <Main component={Data} /> */}
-        <Route component={Login} path="/" exact />
-        <Route component={Main} path="/Main" />
-        {/* <Route component={Checkout} path="/checkout" /> */}
+
+        <Route component={Login} path="/Login" />
+        <Route component={Register} path="/Register" />
+        <Route component={Cart} path="/Cart" />
+        <Route component={Contact} path="/Contact" />
+
+        <Route component={Main} exact path="/" />
+
     </Switch>
 )

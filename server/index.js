@@ -25,9 +25,9 @@ massive(CONNECTION_STRING).then(dbInstance => {
 // app.use(checkForSession);
 
 // Endpoints
-app.post('/api/products', productsController.create);
 app.get('/api/products', productsController.getAll);
 app.get('/api/products/:id', productsController.getOne);
+app.post('/api/products', productsController.create);
 app.put('/api/products/:id', productsController.update);
 app.delete('/api/products/:id', productsController.delete);
 

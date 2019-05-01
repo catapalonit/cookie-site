@@ -27,7 +27,9 @@ export default class Header extends Component {
 
                 <nav>
                     <header>
-                        <h1> Stacy's Cookies </h1>
+                        {/* <h1> Stacy's Cookies </h1> */}
+                        <a className="name" href="/">Stacy's Cookies</a>
+
                     </header>
                     <div className="Menu-button" onClick={() => this.handleClick()}>
                         <h6>MENU</h6>
@@ -40,12 +42,14 @@ export default class Header extends Component {
                         <a href="/Login">LOGIN</a>
                         <a href="/Register">REGISTER</a>
                         <a href="/Cart">CART</a>
+                        <a href="/Contact">CONTACT</a>
                     </ul>
                     <div className={"drop-down-" + this.state.menuStatus}> {/* set to only display when menuStatus is open  */}
                         <ul className="drop-down-list">
                             <a href="/Login">LOGIN</a>
                             <a href="/Register">REGISTER</a>
                             <a href="/Cart">CART</a>
+                            <a href="/Contact">CONTACT</a>
                         </ul>
                     </div>
                 </nav>

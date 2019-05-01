@@ -1,21 +1,25 @@
-.Main {
-    padding-top: 15vh;
-}
+.Main-outer {
+        padding-top: 20vh;
 
-img {
-    max-width: 50px;
-    max-height: 50px;
 }
 .Main {
     display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .Card {
-    background: white;
+    background: rgb(236, 236, 236);
+    width: 200px;
     min-width: 20vw;
     border: 1px solid red;
     padding: 30px;
-    
+    margin: 10px;
 
+ img { //has to be targeted inside of card or header.scss overrides
+        max-width: 150px;
+        max-height: 150px;
+        border: red 2px solid;
+       
+    }
+    
 }
