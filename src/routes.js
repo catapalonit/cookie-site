@@ -15,8 +15,8 @@ export default (
         <Route component={Register} path="/Register" />
         <Route component={Cart} path="/Cart" />
         <Route component={Contact} path="/Contact" />
+        <Route exact path="/" component={Main} />
 
-        <Route component={Main} exact path="/" />
 
     </Switch>
 )

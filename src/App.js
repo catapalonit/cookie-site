@@ -5,7 +5,7 @@ import Header from './components/Header/Header'
 // import Main from './components/Main/Main'
 // import Cart from './components/Cart/Cart'
 // import Contact from './components/Contact/Contact'
-import router from './router'
+import routes from './routes'
 import { Provider } from 'react-redux'
 import store from './store'
 
@@ -16,7 +16,8 @@ class App extends Component {
         <Provider store={store}>
           <div className="App">
             <Header />
-            {router}
+
+            {routes}
           </div>
         </Provider>
       </HashRouter>

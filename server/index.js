@@ -31,7 +31,8 @@ app.post('/api/products', productsController.create);
 app.put('/api/products/:id', productsController.update);
 app.delete('/api/products/:id', productsController.delete);
 
-
+app.post('/api/login', authController.loginUser)
+app.post('/api/register', authController.registerUser)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}.`);

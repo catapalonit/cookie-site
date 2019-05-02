@@ -9,6 +9,7 @@ export default class Header extends Component {
             cookies: []
         }
     }
+
     componentDidMount() {
         axios.get('/api/products').then(response => {
             console.log(response)
@@ -16,25 +17,34 @@ export default class Header extends Component {
         })
     }
 
+    // handleClick() {
+    //     console.log("hit")
+    //         .post('/api/products', { cookies: cookies })
+    //         .then(res => {
+    //             this.props.add
+    //         })
+
+    // }
+
     render() {
         // map here
         let itemList = this.state.cookies.map(cookie => {
-            return <div className="Main-outer" >
-                <div className="Main">
-                    <div className="Card">
-                        <img className="Cookie" src={cookie.image} alt="cookie" />
-                        <h3>{cookie.name}</h3>
-                        <h3>{cookie.price}</h3>
-                        <button className="addToCart"> Add To Cart </button>
-                    </div>
-                </div>
-            </div >
+            return <div className="Card">
+                <img className="Cookie" src={cookie.image} alt="cookie" />
+                <h3>{cookie.name}</h3>
+                <h3>{cookie.price}</h3>
+                <button className="addToCart" onClick={() => this.handleClick()}> Add To Cart </button>
+
+            </div>
+
         })
 
         return (
             <div>
 
-                <div>{itemList}</div>
+                <div className="Item_List">
+                    {itemList}
+                </div>
 
             </div >
 

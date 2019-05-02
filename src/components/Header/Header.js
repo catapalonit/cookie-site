@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 
 
 
@@ -39,17 +40,17 @@ export default class Header extends Component {
                         />
                     </div>
                     <ul>
-                        <a href="/Login">LOGIN</a>
-                        <a href="/Register">REGISTER</a>
-                        <a href="/Cart">CART</a>
-                        <a href="/Contact">CONTACT</a>
+                        <Link to="/Login">LOGIN</Link>
+                        <Link to="/Register">REGISTER</Link>
+                        <Link to="/Cart">CART</Link>
+                        <Link to="/Contact">CONTACT</Link>
                     </ul>
                     <div className={"drop-down-" + this.state.menuStatus}> {/* set to only display when menuStatus is open  */}
                         <ul className="drop-down-list">
-                            <a href="/Login">LOGIN</a>
-                            <a href="/Register">REGISTER</a>
-                            <a href="/Cart">CART</a>
-                            <a href="/Contact">CONTACT</a>
+                            <Link to="/Login">LOGIN</Link>
+                            <Link to="/Register">REGISTER</Link>
+                            <Link to="/Cart">CART</Link>
+                            <Link to="/Contact">CONTACT</Link>
                         </ul>
                     </div>
                 </nav>
