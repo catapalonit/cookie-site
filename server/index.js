@@ -4,7 +4,14 @@ const session = require("express-session");
 const app = express();
 const massive = require('massive');
 const productsController = require('./controllers/productsController')
+const authController = require('./controllers/authController')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
+
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const fileType = require('file-type');
+const bluebird = require('bluebird');
+const multiparty = require('multiparty');
 
 
 // Middleware
@@ -31,8 +38,55 @@ app.post('/api/products', productsController.create);
 app.put('/api/products/:id', productsController.update);
 app.delete('/api/products/:id', productsController.delete);
 
-app.post('/api/login', authController.loginUser)
-app.post('/api/register', authController.registerUser)
+// app.post('/api/login', authController.loginUser)
+// app.post('/api/register', authController.registerUser)
+
+
+
+//AWS STUFF
+
+// configure the keys for accessing AWS
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
+
+// configure AWS to work with promises
+AWS.config.setPromisesDependency(bluebird);
+
+// create S3 instance
+const s3 = new AWS.S3();
+
+// abstracts function to upload a file returning a promise
+const uploadFile = (buffer, name, type) => {
+    const params = {
+        ACL: 'public-read',
+        Body: buffer,
+        Bucket: process.env.S3_BUCKET,
+        ContentType: type.mime,
+        Key: `${name}.${type.ext}`
+    };
+    return s3.upload(params).promise();
+};
+
+// Define POST route
+app.post('/test-upload', (request, response) => {
+    const form = new multiparty.Form();
+    form.parse(request, async (error, fields, files) => {
+        if (error) throw new Error(error);
+        try {
+            const path = files.file[0].path;
+            const buffer = fs.readFileSync(path);
+            const type = fileType(buffer);
+            const timestamp = Date.now().toString();
+            const fileName = `bucketFolder/${timestamp}-lg`;
+            const data = await uploadFile(buffer, fileName, type);
+            return response.status(200).send(data);
+        } catch (error) {
+            return response.status(400).send(error);
+        }
+    });
+});
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}.`);

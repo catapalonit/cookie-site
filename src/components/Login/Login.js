@@ -20,13 +20,13 @@ export default class Login extends Component {
         this.setState({ password: e.target.value })
     }
 
-    // handleClick = e => {
-    //     const { username, password } = this.state;
+    handleClick = e => {
+        const { username, password } = this.state;
 
-    //     axios.post("/api/login", { username, password }).then(res => {
-    //         this.setState({ redirect: true })
-    //     })
-    // }
+        axios.post("/api/login", { username, password }).then(res => {
+            this.setState({ redirect: true })
+        })
+    }
 
     handleEnter = e => {
         if (e.key === "Enter") {
