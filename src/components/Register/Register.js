@@ -13,7 +13,8 @@ class Register extends Component {
             username: '',
             password: '',
             email: '',
-            redirect: false
+            redirect: false,
+            usernameTaken: false
         }
     }
 
@@ -37,6 +38,11 @@ class Register extends Component {
         }).then(user => {
             this.props.updateUser(user.data)
             this.setState({ redirect: true })
+        }).catch(err => {
+            console.log("Username already taken")
+            this.setState({
+                usernameTaken: true
+            })
         })
     }
 
@@ -45,9 +51,8 @@ class Register extends Component {
         if (this.state.redirect) {
             return <Redirect to='/' />
         }
-        // const usernameTaken = ({
-        //     if 
-        // }
+
+
         return (
             <div className="register-page">
                 <h1>Register</h1>
@@ -58,7 +63,7 @@ class Register extends Component {
                 <input type='email' onChange={this.handleEmail} placeholder="Email" />
                 <br />
                 <button onClick={this.handleClick}>Register</button>
-                {/* {usernameTaken} */}
+                {this.state.usernameTaken && <h3>This username is already taken, please try again. </h3>}
             </div>
         )
     }

@@ -63,5 +63,24 @@ module.exports = {
                 res.status(500).send({ errorMessage: "Error" });
                 console.log(err)
             });
+    },
+    addToCart: (req, res) => {
+        const dbInstance = req.app.get('db');
+
+        dbInstance.add_to_cart(req.params.id)
+            .then((response) => {
+                console.log(response)
+                req.session.user.cart = [{
+                    image: response[0].image,
+                    name: response[0].name,
+                    price: response[0].price
+
+                }]
+                res.status(200).json(req.session.user)
+            })
+            .catch(err => {
+                res.status(500).send({ errorMessage: "Error" });
+                console.log(err)
+            });
     }
 };

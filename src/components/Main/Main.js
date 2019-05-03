@@ -16,22 +16,24 @@ export default class Main extends Component {
         })
     }
 
-    handleClick() {
-        console.log("hit")
-        axios.post('/api/cart/:id').then(response => {
-            this.setState({ cookies: response.data })
+    handleClick(id) {
+        console.log(id)
+        axios.post(`/api/cart/${id}`).then(response => {
+            console.log(response)
+            this.setState({ cookies: [...this.state.cookies, response.data] })
         })
 
     }
 
     render() {
         // map here
+        console.log(this.state.cookies)
         let itemList = this.state.cookies.map(cookie => {
             return <div className="Card">
                 <img className="Cookie" src={cookie.image} alt="cookie" />
                 <h3>{cookie.name}</h3>
                 <h4> $ {cookie.price}</h4>
-                <button className="addToCart" onClick={() => this.handleClick()}> Add To Cart </button>
+                <button className="addToCart" onClick={() => this.handleClick(cookie.id)}> Add To Cart </button>
             </div>
         })
 
