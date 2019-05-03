@@ -39,7 +39,7 @@ export default class Login extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/Main' />
+            return <Redirect to='/' />
         }
         return (
             <div className="login-page">

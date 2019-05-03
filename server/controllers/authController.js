@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs')
+
 module.exports = {
     registerUser: (req, res) => {
         //get username password and email off the body
@@ -14,11 +15,11 @@ module.exports = {
             } else {
                 //hash the password
                 bcrypt.hash(password, 12).then(newPassword => { //first use of bcrypt
+                    console.log(newPassword.length);
                     db.createUser(username, newPassword, email).then(() => {
                         req.session.user = {
                             username: username,
                             email: email,
-                            balance: 0
                         }
                         res.status(200).json(req.session.user)
                     }).catch(err => console.log(err))
@@ -43,7 +44,6 @@ module.exports = {
                         req.session.user = {
                             username: user[0].username,
                             email: user[0].email,
-                            balance: user[0].balance
                         }
                         res.status(200).json(req.session.user)
                     } else {

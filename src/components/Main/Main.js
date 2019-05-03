@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Main.scss';
 import axios from 'axios';
 
-export default class Header extends Component {
+export default class Main extends Component {
     constructor() {
         super()
         this.state = {
@@ -12,19 +12,17 @@ export default class Header extends Component {
 
     componentDidMount() {
         axios.get('/api/products').then(response => {
-            console.log(response)
             this.setState({ cookies: response.data })
         })
     }
 
-    // handleClick() {
-    //     console.log("hit")
-    //         .post('/api/products', { cookies: cookies })
-    //         .then(res => {
-    //             this.props.add
-    //         })
+    handleClick() {
+        console.log("hit")
+        axios.post('/api/cart/:id').then(response => {
+            this.setState({ cookies: response.data })
+        })
 
-    // }
+    }
 
     render() {
         // map here
@@ -34,18 +32,14 @@ export default class Header extends Component {
                 <h3>{cookie.name}</h3>
                 <h4> $ {cookie.price}</h4>
                 <button className="addToCart" onClick={() => this.handleClick()}> Add To Cart </button>
-
             </div>
-
         })
 
         return (
             <div>
-
                 <div className="Item_List">
                     {itemList}
                 </div>
-
             </div >
 
         );

@@ -1,55 +1,72 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import axios from 'axios'
 import './Register.scss'
-import { Link, Redirect } from 'react-router-dom'
-import axios from "axios";
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { updateUser } from '../../ducks/reducer.js'
 
-export default class Register extends Component {
+
+class Register extends Component {
     constructor() {
         super()
         this.state = {
-            username: "",
-            password: "",
+            username: '',
+            password: '',
+            email: '',
             redirect: false
         }
     }
 
-    handleUsername = e => {
+    handleUsername = (e) => {
         this.setState({ username: e.target.value })
     }
-    handlePassword = e => {
+
+    handlePassword = (e) => {
         this.setState({ password: e.target.value })
     }
 
-    handleClick = e => {
-        const { username, password } = this.state;
+    handleEmail = (e) => {
+        this.setState({ email: e.target.value })
+    }
 
-        axios.post("/api/login", { username, password }).then(res => {
+    handleClick = () => {
+        axios.post('/api/register', {
+            username: this.state.username,
+            password: this.state.password,
+            email: this.state.email
+        }).then(user => {
+            this.props.updateUser(user.data)
             this.setState({ redirect: true })
         })
     }
 
-    handleEnter = e => {
-        if (e.key === "Enter") {
-            this.handleClick()
-        }
-        console.log("hit")
-    }
-
-
 
     render() {
-        if (this.state.redirect === true) {
-            return <Redirect to='/Main' />
+        if (this.state.redirect) {
+            return <Redirect to='/' />
         }
+        // const usernameTaken = ({
+        //     if 
+        // }
         return (
             <div className="register-page">
                 <h1>Register</h1>
-                <input type="text" onChange={this.handleUsername} placeholder="Username" />
-                < br />
-                <input type="password" onChange={this.handlePassword} onKeyPress={this.handleEnter} placeholder="Password" />
-                < br />
-                <button onClick={this.handleClick} onKeyPress={this.handleEnter}>Sign Up</button>
+                <input onChange={this.handleUsername} placeholder="Username" />
+                <br />
+                <input type='password' onChange={this.handlePassword} placeholder="Password" />
+                <br />
+                <input type='email' onChange={this.handleEmail} placeholder="Email" />
+                <br />
+                <button onClick={this.handleClick}>Register</button>
+                {/* {usernameTaken} */}
             </div>
-        );
+        )
     }
 }
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { updateUser })(Register)
