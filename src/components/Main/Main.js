@@ -32,7 +32,7 @@ export default class Header extends Component {
             return <div className="Card">
                 <img className="Cookie" src={cookie.image} alt="cookie" />
                 <h3>{cookie.name}</h3>
-                <h3>{cookie.price}</h3>
+                <h4> $ {cookie.price}</h4>
                 <button className="addToCart" onClick={() => this.handleClick()}> Add To Cart </button>
 
             </div>

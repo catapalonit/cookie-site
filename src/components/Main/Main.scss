@@ -3,6 +3,12 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+// .addToCart {
+//     color: aqua;
+//     background : white;
+//     border-radius: 10px;
+//     border: none;
+// }
 
 .Card {
     background: rgb(236, 236, 236);
@@ -15,8 +21,9 @@
 
 
  img { //has to be targeted inside of card or header.scss overrides
-        max-width: 150px;
-        max-height: 150px;
+        max-width: 200px;
+        max-height: 200px;
+        
         // border: red 2px solid;
        
     }

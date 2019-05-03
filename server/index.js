@@ -38,8 +38,8 @@ app.post('/api/products', productsController.create);
 app.put('/api/products/:id', productsController.update);
 app.delete('/api/products/:id', productsController.delete);
 
-// app.post('/api/login', authController.loginUser)
-// app.post('/api/register', authController.registerUser)
+app.post('/api/login', authController.loginUser)
+app.post('/api/register', authController.registerUser)
 
 
 

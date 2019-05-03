@@ -19,10 +19,10 @@ class FileUpload extends Component {
       }
     }).then(response => {
       // handle your response;
-      return response.status(200).send(data)
+      console.log(response);
     }).catch(error => {
       // handle your error
-      res.status(500).send({ errorMessage: "Error" });
+
       console.log(error)
     });
   }
