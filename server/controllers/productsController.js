@@ -23,12 +23,11 @@ module.exports = {
         res.status(200).send(product)
     },
 
-    create: (req, res) => { //update
+    create: (req, res) => {
         const dbInstance = req.app.get('db');
 
         dbInstance.create_product( //connected the sql file here
             [
-                req.body.image,
                 req.body.name,
                 req.body.price
             ]
