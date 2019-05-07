@@ -6,6 +6,7 @@ const massive = require('massive');
 const productsController = require('./controllers/productsController')
 const authController = require('./controllers/authController')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
+const checkForSession = require('./middlewares/checkForSession')
 
 const AWS = require('aws-sdk');
 const fs = require('fs');
@@ -34,12 +35,13 @@ app.use(
     })
 );
 
+
 massive(CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
     console.log('db connected');
 }).catch(err => console.log(err));
 
-// app.use(checkForSession);
+app.use(checkForSession);
 
 // Endpoints
 app.get('/api/products', productsController.getAll);
@@ -52,6 +54,7 @@ app.post('/api/login', authController.loginUser)
 app.post('/api/register', authController.registerUser)
 
 app.post("/api/cart/:id", productsController.addToCart)
+app.get("/api/cart", productsController.getCart)
 
 
 

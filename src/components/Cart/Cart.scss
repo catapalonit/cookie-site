@@ -1,0 +1,33 @@
+.Cart_List {
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    // height: 100vh
+}
+.Checkout-Page {
+    // background: red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.Checkout {
+    height: 4vh;
+    border-radius: 5px;
+}
+
+.Checkout-Card {
+    background: rgb(236, 236, 236);
+    width: 200px;
+    min-width: 15vw;
+    padding: 30px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+
+ img { //has to be targeted inside of card or header.scss overrides
+        max-width: 150px;
+        max-height: 150px;       
+    }
+}
