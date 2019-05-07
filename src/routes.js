@@ -5,6 +5,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Cart from "./components/Cart/Cart"
 import Contact from './components/Contact/Contact';
+import FileUpload from './components/FileUpload/FileUpload';
 
 
 
@@ -15,6 +16,7 @@ export default (
         <Route component={Register} path="/Register" />
         <Route component={Cart} path="/Cart" />
         <Route component={Contact} path="/Contact" />
+        <Route component={FileUpload} path="/FileUpload" />
         <Route exact path="/" component={Main} />
 
 

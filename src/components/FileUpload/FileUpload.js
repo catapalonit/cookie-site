@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './FileUpload.scss'
 
-class FileUpload extends Component {
+export default class FileUpload extends Component {
   constructor() {
     super();
     this.state = {
@@ -13,7 +14,7 @@ class FileUpload extends Component {
     event.preventDefault();
     const formData = new FormData();
     formData.append('file', this.state.file[0]);
-    axios.post(`/test-upload`, formData, {
+    axios.post(`/api/products`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -33,12 +34,14 @@ class FileUpload extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submitFile}>
-        <input label='upload file' type='file' onChange={this.handleFileUpload} />
-        <button type='submit'>Send</button>
-      </form>
+      <div className="Admin-Page">
+        <form onSubmit={this.submitFile}>
+          <input label='upload file' type='file' onChange={this.handleFileUpload} />
+          <br />
+          <button type='submit'>Add a new cookie</button>
+        </form>
+      </div>
     );
   }
 }
 
-export default FileUpload;

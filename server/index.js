@@ -50,9 +50,12 @@ app.post('/api/products', productsController.create);
 app.put('/api/products/:id', productsController.update);
 app.delete('/api/products/:id', productsController.delete);
 
+// Log in endpoints
 app.post('/api/login', authController.loginUser)
 app.post('/api/register', authController.registerUser)
+app.delete('/api/signout', authController.signout)
 
+// Cart Endpoints
 app.post("/api/cart/:id", productsController.addToCart)
 app.get("/api/cart", productsController.getCart)
 
@@ -85,7 +88,7 @@ const uploadFile = (buffer, name, type) => {
 };
 
 // Define POST route
-app.post('/test-upload', (request, response) => {
+app.post('/api/products', (request, response) => {
     const form = new multiparty.Form();
     form.parse(request, async (error, fields, files) => {
         if (error) throw new Error(error);

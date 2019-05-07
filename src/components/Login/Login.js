@@ -9,7 +9,8 @@ export default class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            redirect: false
+            redirect: false,
+            admin: false
         }
     }
 
@@ -32,14 +33,14 @@ export default class Login extends Component {
         if (e.key === "Enter") {
             this.handleClick()
         }
-        console.log("hit")
     }
-
-
 
     render() {
         if (this.state.redirect === true) {
             return <Redirect to='/' />
+        }
+        else if (this.user.admin === true) {
+            return <Redirect to='/FileUpload' />
         }
         return (
             <div className="login-page">

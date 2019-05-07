@@ -78,6 +78,7 @@ module.exports = {
                         name: response[0].name,
                         price: response[0].price
                     })
+                req.session.user.total += response[0].price
                 res.status(200).json(req.session.user)
             })
             .catch(err => {
@@ -86,6 +87,6 @@ module.exports = {
             });
     },
     getCart: (req, res) => {
-        res.status(200).json(req.session.user.cart)
+        res.status(200).json(req.session.user)
     }
 };

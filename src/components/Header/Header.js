@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
-
-
+import axios from 'axios'
 
 export default class Header extends Component {
     constructor() {
@@ -22,13 +21,18 @@ export default class Header extends Component {
             })
         }
     }
+
+    handleSignout = () => {
+        axios.delete("/api/signout").then(response => {
+            console.log(response)
+        })
+    }
     render() {
         return (
             <div className="Header">
 
                 <nav>
                     <header>
-                        {/* <h1> Stacy's Cookies </h1> */}
                         <a className="name" href="/">Stacy's Cookies</a>
 
                     </header>
@@ -41,16 +45,19 @@ export default class Header extends Component {
                     </div>
                     <ul>
                         <Link to="/Login">LOGIN</Link>
-                        <Link to="/Register">REGISTER</Link>
                         <Link to="/Cart">CART</Link>
                         <Link to="/Contact">CONTACT</Link>
+                        <a href="/" onClick={() => this.handleSignout()}>SIGN OUT</a>
+
+
                     </ul>
                     <div className={"drop-down-" + this.state.menuStatus}> {/* set to only display when menuStatus is open  */}
                         <ul className="drop-down-list">
                             <Link to="/Login">LOGIN</Link>
-                            <Link to="/Register">REGISTER</Link>
                             <Link to="/Cart">CART</Link>
                             <Link to="/Contact">CONTACT</Link>
+                            <a href="/" onClick={() => this.handleSignout()}>SIGN OUT</a>
+
                         </ul>
                     </div>
                 </nav>

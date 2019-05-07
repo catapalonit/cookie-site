@@ -7,22 +7,21 @@ export default class Cart extends Component {
     constructor() {
         super()
         this.state = {
-            cart: []
+            cart: [],
+            total: 0
         }
     }
     componentDidMount() {
         axios.get('/api/cart').then(response => {
             console.log(response)
-            this.setState({ cart: [...this.state.cart, response.data] })
+            this.setState({
+                cart: [...this.state.cart, response.data.cart],
+                total: response.data.total
+            })
         })
     }
 
-
-
-
     render() {
-        let total = this.state.cart.price.reduce((total, num) => { return total + num.price }, 0)
-
         let userCart;
         if (this.state.cart[0]) {
             userCart = this.state.cart[0].map(cart => {
@@ -39,7 +38,7 @@ export default class Cart extends Component {
         return (
             <div className="Cart_List">
                 <h1>Cart</h1>
-                <h2>Total {total}</h2>
+                <h2>Total: $ {this.state.total}</h2>
                 <button className="Checkout" onClick={() => this.handleClick()}> Checkout </button>
                 <br />
                 <div>

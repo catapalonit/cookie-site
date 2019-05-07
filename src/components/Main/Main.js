@@ -11,7 +11,6 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-
         axios.get('/api/products').then(response => {
             console.log(response)
             this.setState({ cookies: response.data })
@@ -22,9 +21,7 @@ export default class Main extends Component {
         console.log(id)
         axios.post(`/api/cart/${id}`).then(response => {
             console.log(response)
-            this.setState({ cookies: [...this.state.cookies, response.data] })
         })
-
     }
 
     render() {
@@ -45,7 +42,6 @@ export default class Main extends Component {
                     {itemList}
                 </div>
             </div >
-
         );
     }
 }

@@ -61,6 +61,10 @@ module.exports = {
         //put them on the session
         //send response
 
+    },
+    signout: (req, res) => {
+        req.session.destroy();
+        res.status(200).send(req.session);
     }
 
 }
