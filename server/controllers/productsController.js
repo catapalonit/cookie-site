@@ -17,7 +17,7 @@ module.exports = {
 
         let product = await dbInstance.read_one_product(req.params.id) //connected the sql file here
             .catch(err => {
-                res.status(500).send({ errorMessage: "Error" });
+                res.status(500).send({ errorMessage: "Error1" });
                 console.log(err)
             });
         res.status(200).send(product)
@@ -25,16 +25,17 @@ module.exports = {
 
     create: (req, res) => {
         const dbInstance = req.app.get('db');
-
+        console.log(req.body)
         dbInstance.create_product( //connected the sql file here
             [
+                req.body.image,
                 req.body.name,
                 req.body.price
             ]
         )
             .then(() => res.sendStatus(200))
             .catch(err => {
-                res.status(500).send({ errorMessage: "Error" });
+                res.status(500).send({ errorMessage: "Error2" });
                 console.log(err)
             });
     },
@@ -49,7 +50,7 @@ module.exports = {
             ])
             .then(() => res.sendStatus(200))
             .catch(err => {
-                res.status(500).send({ errorMessage: "Error" });
+                res.status(500).send({ errorMessage: "Error3" });
                 console.log(err)
             });
     },
@@ -57,10 +58,10 @@ module.exports = {
     delete: (req, res) => {
         const dbInstance = req.app.get('db');
 
-        dbInstance.delete_product(req.params.id) //connected the sql file here
+        dbInstance.delete_product(req.params.name) //connected the sql file here
             .then(() => res.sendStatus(200))
             .catch(err => {
-                res.status(500).send({ errorMessage: "Error" });
+                res.status(500).send({ errorMessage: "Error4" });
                 console.log(err)
             });
     },
@@ -81,7 +82,7 @@ module.exports = {
                 res.status(200).json(req.session.user)
             })
             .catch(err => {
-                res.status(500).send({ errorMessage: "Error" });
+                res.status(500).send({ errorMessage: "Error5" });
                 console.log(err)
             });
     },
