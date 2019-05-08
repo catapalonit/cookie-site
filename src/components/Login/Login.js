@@ -51,7 +51,7 @@ export default class Login extends Component {
                 < br />
 
                 <button onClick={this.handleClick} onKeyPress={this.handleEnter}>Log In</button>
-                <h3>Don't have an account? <Link to="register">Register</Link> Today!</h3>
+                <h3>Don't have an account? <Link className="Register-Button" to="register">Register</Link> Today!</h3>
             </div>
         );
     }

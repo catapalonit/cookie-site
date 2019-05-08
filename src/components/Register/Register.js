@@ -46,6 +46,12 @@ class Register extends Component {
         })
     }
 
+    handleEnter = e => {
+        if (e.key === "Enter") {
+            this.handleClick()
+        }
+    }
+
 
     render() {
         if (this.state.redirect) {
@@ -60,9 +66,9 @@ class Register extends Component {
                 <br />
                 <input type='password' onChange={this.handlePassword} placeholder="Password" />
                 <br />
-                <input type='email' onChange={this.handleEmail} placeholder="Email" />
+                <input type='email' onChange={this.handleEmail} onKeyPress={this.handleEnter} placeholder="Email" />
                 <br />
-                <button onClick={this.handleClick}>Register</button>
+                <button onClick={this.handleClick} onKeyPress={this.handleEnter} >Register</button>
                 {this.state.usernameTaken && <h3>This username is already taken, please try again. </h3>}
             </div>
         )

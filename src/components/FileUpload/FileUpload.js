@@ -50,14 +50,16 @@ export default class FileUpload extends Component {
   deleteFile = (event) => {
     event.preventDefault()
     // handle your response;
-    axios.delete('/api/products/:name', {
+
+    axios.delete(`/api/products/${this.state.name}`, {
       name: this.state.name,
     }).then(response => {
-      console.log("deleted")
+      console.log(response)
     }).catch(error => {
       // handle your error
       console.log(error)
     });
+    console.log(this.state.name)
   }
 
   deleteCookie = (e) => {

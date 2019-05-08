@@ -12,16 +12,6 @@ module.exports = {
         res.status(200).send(products)
     },
 
-    getOne: async (req, res) => {//get by id
-        const dbInstance = req.app.get('db');
-
-        let product = await dbInstance.read_one_product(req.params.id) //connected the sql file here
-            .catch(err => {
-                res.status(500).send({ errorMessage: "Error1" });
-                console.log(err)
-            });
-        res.status(200).send(product)
-    },
 
     create: (req, res) => {
         const dbInstance = req.app.get('db');
@@ -57,9 +47,9 @@ module.exports = {
 
     delete: (req, res) => {
         const dbInstance = req.app.get('db');
-
+        console.log(req.params)
         dbInstance.delete_product(req.params.name) //connected the sql file here
-            .then(() => res.sendStatus(200))
+            .then((response) => res.status(200).json(response))
             .catch(err => {
                 res.status(500).send({ errorMessage: "Error4" });
                 console.log(err)

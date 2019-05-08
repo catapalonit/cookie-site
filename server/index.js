@@ -45,7 +45,6 @@ app.use(checkForSession);
 
 // Endpoints
 app.get('/api/products', productsController.getAll);
-app.get('/api/products/:id', productsController.getOne);
 app.post('/api/products', productsController.create);
 app.put('/api/products/:id', productsController.update);
 app.delete('/api/products/:name', productsController.delete);
