@@ -40,10 +40,13 @@ module.exports = {
         db.verifyUser(username).then(user => {
             if (user.length > 0) {
                 bcrypt.compare(password, user[0].password).then(doesMatch => {
+                    //check the password
+
                     if (doesMatch) {
                         req.session.user.username = user[0].username;
                         req.session.user.email = user[0].email;
-
+                        //put them on the session
+                        //send response
                         res.status(200).json(req.session.user)
                     } else {
                         res.status(403).json({
@@ -57,10 +60,6 @@ module.exports = {
                 })
             }
         })
-        //check the password
-        //put them on the session
-        //send response
-
     },
     signout: (req, res) => {
         req.session.destroy();

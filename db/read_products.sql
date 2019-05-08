@@ -1,1 +1,1 @@
-SELECT * FROM products ORDER BY id DESC
+SELECT * FROM cookie_products ORDER BY id DESC

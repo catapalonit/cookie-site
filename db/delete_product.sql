@@ -1,4 +1,4 @@
-DELETE FROM products WHERE name = $1;
+DELETE FROM cookie_products WHERE name = $1;
 
-SELECT * FROM products;
+SELECT * FROM cookie_products;
 
