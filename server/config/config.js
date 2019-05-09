@@ -1,3 +1,1 @@
-module.exports = {
-
-}
+let num = 2;
