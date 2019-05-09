@@ -16,7 +16,6 @@ const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 
 // nodemailer stuff
-const router = express.Router();
 const nodemailer = require('nodemailer');
 
 
@@ -49,10 +48,10 @@ massive(CONNECTION_STRING).then(dbInstance => {
 app.use(checkForSession);
 
 // Endpoints
-app.get('/api/products', productsController.getAll);
-app.post('/api/products', productsController.create);
-app.put('/api/products/:id', productsController.update);
-app.delete('/api/products/:name', productsController.delete);
+app.get('/api/cookie_products', productsController.getAll);
+app.post('/api/cookie_products', productsController.create);
+app.put('/api/cookie_products/:id', productsController.update);
+app.delete('/api/cookie_products/:name', productsController.delete);
 
 // Log in endpoints
 app.post('/api/login', authController.loginUser)
@@ -111,51 +110,37 @@ app.post('/api/upload', (request, response) => {
 });
 
 //nodemailer  stuff
-var transport = {
-    host: 'smtp.gmail.com',
-    auth: {
-        user: process.env.user,
-        pass: process.env.pass
-    }
-}
-
-var transporter = nodemailer.createTransport(transport)
-
-transporter.verify((error, success) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Server is ready to take messages');
-    }
-});
-
-router.post('/send', (req, res, next) => {
-    var name = req.body.name
-    var email = req.body.email
-    var message = req.body.message
-    var content = `name: ${name} \n email: ${email} \n message: ${message} `
-
-    var mail = {
-        from: name,
-        to: 'bhawkins3729@gmail.com',  //Change to email address that you want to receive messages on
-        subject: 'New Message from Contact Form',
-        text: content
-    }
-
-    transporter.sendMail(mail, (err, data) => {
-        if (err) {
-            res.json({
-                msg: 'fail'
-            })
-        } else {
-            res.json({
-                msg: 'success'
-            })
+app.post("/send", (req, res) => {
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
         }
-    })
+    });
+
+    mailOptions = {
+        from: "Cookie-Site",
+        to: "stacyscookies123@gmail.com",
+        subject: "A cookie user has sent you an email",
+        html: `<b>
+        user name = ${req.body.name}
+        user email = ${req.body.email}
+        Message from user = ${req.body.message}
+        </b>`
+    };
+
+    transporter.sendMail(mailOptions, function (err, res) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            null;
+        }
+    });
+    res.sendStatus(200);
 })
 
-module.exports = router;
+
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}.`);

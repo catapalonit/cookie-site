@@ -30,7 +30,6 @@ export default class Header extends Component {
     render() {
         return (
             <div className="Header">
-
                 <nav>
                     <header>
                         <a className="name" href="/">Stacy's Cookies</a>
@@ -47,16 +46,14 @@ export default class Header extends Component {
                         <Link to="/Login">LOGIN</Link>
                         <Link to="/Cart">CART</Link>
                         <Link to="/Contact">CONTACT</Link>
-                        <a href="/" onClick={() => this.handleSignout()}>SIGN OUT</a>
-
-
+                        <Link to="/Signout" onClick={() => this.handleSignout()}>SIGN OUT</Link>
                     </ul>
                     <div className={"drop-down-" + this.state.menuStatus}> {/* set to only display when menuStatus is open  */}
                         <ul className="drop-down-list">
                             <Link to="/Login">LOGIN</Link>
                             <Link to="/Cart">CART</Link>
                             <Link to="/Contact">CONTACT</Link>
-                            <a href="/" onClick={() => this.handleSignout()}>SIGN OUT</a>
+                            <Link to="/Signout" onClick={() => this.handleSignout()}>SIGN OUT</Link>
 
                         </ul>
                     </div>

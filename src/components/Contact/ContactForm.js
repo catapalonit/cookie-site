@@ -4,57 +4,60 @@ import './Contact.scss';
 
 
 export default class ContactForm extends Component {
-
+    state = {
+        name: "",
+        email: "",
+        message: "",
+        messageSent: false
+    }
     handleSubmit(e) {
         e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        axios({
-            method: "POST",
-            url: "http://localhost:3002/send",
-            data: {
-                name: name,
-                email: email,
-                message: message
-            }
+        axios.post("/send", {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
         }).then((response) => {
-            if (response.data.msg === 'success') {
-                alert("Message Sent.");
-                this.resetForm()
-            } else if (response.data.msg === 'fail') {
-                alert("Message failed to send.")
-            }
-        })
+            this.setState({
+                messageSent: true
+            })
+        }).catch(error => {
+            // handle your error
+            console.log(error)
+        });
     }
 
-    resetForm() {
-        document.getElementById('contact-form').reset();
+    handleName = (e) => {
+        this.setState({ name: e.target.value })
+    }
+    handleEmail = (e) => {
+        this.setState({ email: e.target.value })
+    }
+    handleMessage = (e) => {
+        this.setState({ message: e.target.value })
     }
 
     render() {
         return (
             <div className="contact-page">
-                <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-                    <div>
-                        <label for="name">Name</label>
-                        < br />
-                        <input type="text" id="name" />
-                        < br />
-                        < br />
-                        <label for="exampleInputEmail1">Email address</label>
-                        < br />
-                        <input type="email" id="email" aria-describedby="emailHelp" />
-                        < br />
-                        < br />
-                        <label for="message">Message</label>
-                        < br />
-                        <textarea className="form-control" rows="5" id="message"></textarea>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
+                <h1>Contact Us</h1>
+                {this.state.messageSent === false &&
+                    <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+
+                        <div>
+                            <label>Name</label>< br />
+                            <input type="text" id="name" onChange={this.handleName} />< br />< br />
+                            <label>Email address</label>< br />
+                            <input type="email" id="email" onChange={this.handleEmail} />< br />< br />
+                            <label>Message</label>< br />
+                            <textarea rows="5" id="message" onChange={this.handleMessage}></textarea>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>}
+                {/* next line hides the form */}
+                {this.state.messageSent === true && <h3>Thank you for contacting us. We will get back to you as soon as possible! </h3>}
+
+
             </div>
         )
     }
 }
-

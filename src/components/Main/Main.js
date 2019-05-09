@@ -11,7 +11,7 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/products').then(response => {
+        axios.get('/api/cookie_products').then(response => {
             console.log(response)
             this.setState({ cookies: response.data })
         })

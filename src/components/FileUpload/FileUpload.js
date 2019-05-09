@@ -24,7 +24,7 @@ export default class FileUpload extends Component {
       }
     }).then(response => {
       // handle your response;
-      axios.post('/api/products', {
+      axios.post('/api/cookie_products', {
         image: response.data.Location,
         name: this.state.name,
         price: this.state.price
@@ -51,7 +51,7 @@ export default class FileUpload extends Component {
     event.preventDefault()
     // handle your response;
 
-    axios.delete(`/api/products/${this.state.name}`, {
+    axios.delete(`/api/cookie_products/${this.state.name}`, {
       name: this.state.name,
     }).then(response => {
       console.log(response)

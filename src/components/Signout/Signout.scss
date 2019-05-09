@@ -1,4 +1,4 @@
-.login-page{
+.signout-page{
     padding: 20px;
     margin: 100px auto 300px auto;
     background: rgb(236, 236, 236);
@@ -6,23 +6,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 600px;
     height: 400px;
+    max-height: 80vh;
 }
-
-// .Register-Button {
-// $link
-// }
 
 
 
 // at less than 750 px 
 @media (max-width: 750px) { /* WHEN SCREEN SMALL */
-    .login-page{
+    .signout-page{
         padding: 20px;
         margin: 100px auto 300px auto;
         background: rgb(236, 236, 236);
         display: flex;
+        text-align: center;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 200px;

@@ -15,7 +15,7 @@ export default class Contact extends Component {
                     <h3>Phone: 682-225-9685</h3>
                     <h3>Email: info@stacyscookies.com</h3>
                     <h3>Hours of Operation:
-                        Monday- Friday (CST): 9:00 am - 3:00 pm
+                        Monday- Friday (CST): 11:00 am - 3:00 pm
             </h3>
                     <Link className="Contact-Form-Link" to="/ContactForm">E-Mail Us</Link>
 

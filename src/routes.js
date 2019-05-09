@@ -7,6 +7,7 @@ import Cart from "./components/Cart/Cart"
 import Contact from './components/Contact/Contact';
 import ContactForm from './components/Contact/ContactForm';
 import FileUpload from './components/FileUpload/FileUpload';
+import Signout from './components/Signout/Signout';
 
 
 
@@ -19,6 +20,7 @@ export default (
         <Route component={Contact} path="/Contact" />
         <Route component={ContactForm} path="/ContactForm" />
         <Route component={FileUpload} path="/FileUpload" />
+        <Route component={Signout} path="/Signout" />
         <Route exact path="/" component={Main} />
 
 
