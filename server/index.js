@@ -18,7 +18,7 @@ const multiparty = require('multiparty');
 // nodemailer stuff
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const creds = require('../config/config');
+const creds = require('./config/config');
 
 
 // Middleware
@@ -138,7 +138,7 @@ router.post('/send', (req, res, next) => {
 
     var mail = {
         from: name,
-        to: 'RECEIVING_EMAIL_ADDRESS_GOES_HERE',  //Change to email address that you want to receive messages on
+        to: 'bhawkins3729@gmail.com',  //Change to email address that you want to receive messages on
         subject: 'New Message from Contact Form',
         text: content
     }

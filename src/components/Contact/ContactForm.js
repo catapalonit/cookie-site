@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './Contact.scss';
+
 
 export default class ContactForm extends Component {
 
@@ -32,21 +34,24 @@ export default class ContactForm extends Component {
 
     render() {
         return (
-            <div className="col-sm-4 offset-sm-4">
+            <div className="contact-page">
                 <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-                    <div className="form-group">
+                    <div>
                         <label for="name">Name</label>
-                        <input type="text" className="form-control" id="name" />
-                    </div>
-                    <div className="form-group">
+                        < br />
+                        <input type="text" id="name" />
+                        < br />
+                        < br />
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-                    </div>
-                    <div className="form-group">
+                        < br />
+                        <input type="email" id="email" aria-describedby="emailHelp" />
+                        < br />
+                        < br />
                         <label for="message">Message</label>
+                        < br />
                         <textarea className="form-control" rows="5" id="message"></textarea>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         )

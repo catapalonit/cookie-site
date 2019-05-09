@@ -1,1 +1,5 @@
-let num = 2;
+
+module.exports = {
+    USER: 'cookie-site@fake-box.com',
+    PASS: 'fake1234'
+}

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './Contact.scss';
+import { Link } from 'react-router-dom';
+
 
 export default class Contact extends Component {
 
@@ -15,6 +17,8 @@ export default class Contact extends Component {
                     <h3>Hours of Operation:
                         Monday- Friday (CST): 9:00 am - 3:00 pm
             </h3>
+                    <Link className="Contact-Form-Link" to="/ContactForm">E-Mail Us</Link>
+
                 </div>
             </div>
         );
