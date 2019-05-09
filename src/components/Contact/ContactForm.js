@@ -16,7 +16,7 @@ export default class ContactForm extends Component {
             data: {
                 name: name,
                 email: email,
-                messsage: message
+                message: message
             }
         }).then((response) => {
             if (response.data.msg === 'success') {
