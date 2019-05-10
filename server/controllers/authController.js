@@ -61,6 +61,35 @@ module.exports = {
             }
         })
     },
+    loginAdmin: (req, res) => {
+        //get username and password of of req.body
+        const { username, password } = req.body
+        //get the database
+        const db = req.app.get('db')
+        //find the user with that username
+        db.is_admin(username).then(user => {
+            if (user.length > 0) {
+                bcrypt.compare(password, user[0].password).then(doesMatch => {
+                    //check the password
+                    if (doesMatch) {
+                        req.session.user.username = user[0].username;
+                        req.session.user.email = user[0].email;
+                        //put them on the session
+                        //send response
+                        res.status(200).json(req.session.user)
+                    } else {
+                        res.status(403).json({
+                            error: 'USERNAME_OR_PASSWORD_INCORRECT'
+                        })
+                    }
+                })
+            } else {
+                res.status(404).json({
+                    error: 'USER_DOES_NOT_EXIST'
+                })
+            }
+        })
+    },
     signout: (req, res) => {
         req.session.destroy();
         res.status(200).send(req.session);
