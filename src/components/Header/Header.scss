@@ -25,8 +25,14 @@
     border-radius: 5px;
     cursor: pointer;
     }
+    header {
+        .Logo {
+    height: 110px;
+    width: 110px;
+    }
+}
 
-    img {
+    .Menu-Image {
     max-height: 50px;
     max-width: 50px;
     }

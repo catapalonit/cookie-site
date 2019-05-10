@@ -8,6 +8,7 @@ import Contact from './components/Contact/Contact';
 import ContactForm from './components/Contact/ContactForm';
 import FileUpload from './components/FileUpload/FileUpload';
 import Signout from './components/Signout/Signout';
+import Checkout from './components/Checkout/Checkout';
 
 
 
@@ -21,6 +22,7 @@ export default (
         <Route component={ContactForm} path="/ContactForm" />
         <Route component={FileUpload} path="/FileUpload" />
         <Route component={Signout} path="/Signout" />
+        <Route component={Checkout} path="/Checkout" />
         <Route exact path="/" component={Main} />
 
 
