@@ -3,12 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-// .addToCart {
-//     color: aqua;
-//     background : white;
-//     border-radius: 10px;
-//     border: none;
-// }
+
 
 .Card {
     background: rgb(236, 236, 236);
@@ -19,13 +14,11 @@
     margin: 10px;
     text-align: center;
     border-radius: 10px;
-
-
- img { //has to be targeted inside of card or header.scss overrides
-        max-width: 200px;
-        max-height: 200px;
-        
-        // border: red 2px solid;
-       
-    }
+}
+.Cookie { //has to be targeted inside of card or header.scss overrides
+    max-width: 200px;
+    max-height: 200px;
+    
+    // border: red 2px solid;
+   
 }

@@ -25,17 +25,19 @@
     border-radius: 5px;
     cursor: pointer;
     }
-    header {
-        .Logo {
-    height: 110px;
-    width: 110px;
-    }
-}
 
-    .Menu-Image {
-    max-height: 50px;
-    max-width: 50px;
+
+    .Hamburger-Image {
+    height: 50px;
+    width: 50px;
     }
+
+    .Logo-Image {
+    height: 6em;
+    width: 6em;
+    // height: 90px;
+    // width: 90px
+}
 
     nav {
     display: flex;
@@ -46,10 +48,8 @@
     position: fixed;
     width: 100vw;
     height: 8vh;
-    
     }
 
-    
     
     @media (max-width: 1000px) { /* WHEN SCREEN SMALL */
     .Menu-button {

@@ -8,7 +8,7 @@ import Contact from './components/Contact/Contact';
 import ContactForm from './components/Contact/ContactForm';
 import FileUpload from './components/FileUpload/FileUpload';
 import Signout from './components/Signout/Signout';
-import Checkout from './components/Checkout/Checkout';
+import StripeBtn from './components/StripeBtn/StripeBtn';
 
 
 
@@ -22,7 +22,7 @@ export default (
         <Route component={ContactForm} path="/ContactForm" />
         <Route component={FileUpload} path="/FileUpload" />
         <Route component={Signout} path="/Signout" />
-        <Route component={Checkout} path="/Checkout" />
+        <Route component={StripeBtn} path="/StripeBtn" />
         <Route exact path="/" component={Main} />
 
 
