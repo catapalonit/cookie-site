@@ -8,7 +8,6 @@ const stripeBtn = (props) => {
 
     const onToken = token => {
         const body = {
-
             token: token
         };
         axios.post("/payment", body)
@@ -21,11 +20,7 @@ const stripeBtn = (props) => {
                 alert("Payment Error");
             });
     };
-    console.log("PROPS NUM: ", props.amount)
-    console.log("PROPS TYPE: ", typeof props.amount)
-    console.log("HARDCODED: ", typeof 99999999)
     return (
-
         <StripeCheckout
             amount={props.amount * 100}
             billingAddress

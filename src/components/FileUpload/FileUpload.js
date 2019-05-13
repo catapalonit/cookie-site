@@ -49,8 +49,6 @@ export default class FileUpload extends Component {
 
   deleteFile = (event) => {
     event.preventDefault()
-    // handle your response;
-
     axios.delete(`/api/cookie_products/${this.state.name}`, {
       name: this.state.name,
     }).then(response => {
@@ -65,6 +63,24 @@ export default class FileUpload extends Component {
   deleteCookie = (e) => {
     this.setState({ name: e.target.value })
   }
+
+  updateCookie = (e) => {
+    this.setState({ value: e.target.value })
+  }
+  updateFile = (event) => {
+    event.preventDefault()
+    axios.put(`/api/cookie_products/${this.state.name}`, {
+      price: this.state.price,
+    }).then(response => {
+      console.log(response)
+    }).catch(error => {
+      // handle your error
+      console.log(error)
+    });
+    console.log(this.state.name)
+    console.log(this.state.price)
+  }
+
 
   render() {
     return (
@@ -81,10 +97,17 @@ export default class FileUpload extends Component {
         </form>
         <br />
         <br />
+        <form onSubmit={this.updateFile}>
+          <input label='name' placeholder="Cookie Name" type='text' onChange={this.handleName} />
+          <br />
+          <input label='price' type='text' placeholder="Cookie Price" onChange={this.handlePrice} />
+          <br />
+          <button type="submit" >Update Cookie</button>
+        </form>
         <br />
-
         <form onSubmit={this.deleteFile}>
           <input label='name' placeholder="Cookie Name" type='text' onChange={this.deleteCookie} />
+          <br />
           <button type="submit" >Delete cookie by name</button>
         </form>
       </div>

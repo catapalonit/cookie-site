@@ -50,7 +50,7 @@ app.use(checkForSession);
 // Endpoints
 app.get('/api/cookie_products', productsController.getAll);
 app.post('/api/cookie_products', productsController.create);
-app.put('/api/cookie_products/:id', productsController.update);
+app.put('/api/cookie_products/:name', productsController.update);
 app.delete('/api/cookie_products/:name', productsController.delete);
 
 // Log in endpoints

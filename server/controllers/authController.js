@@ -26,7 +26,6 @@ module.exports = {
                 }).catch(err => console.log(err))
             }
         }).catch(err => console.log(err))
-
         //store it in database
         //add user to session
         //send the user back
@@ -41,7 +40,6 @@ module.exports = {
             if (user.length > 0) {
                 bcrypt.compare(password, user[0].password).then(doesMatch => {
                     //check the password
-
                     if (doesMatch) {
                         req.session.user.username = user[0].username;
                         req.session.user.email = user[0].email;
@@ -74,10 +72,12 @@ module.exports = {
                     if (doesMatch) {
                         req.session.user.username = user[0].username;
                         req.session.user.email = user[0].email;
+                        req.session.user.admin = true;
                         //put them on the session
                         //send response
                         res.status(200).json(req.session.user)
                     } else {
+
                         res.status(403).json({
                             error: 'USERNAME_OR_PASSWORD_INCORRECT'
                         })

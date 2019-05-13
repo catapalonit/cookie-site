@@ -42,7 +42,7 @@ export default class Cart extends Component {
                 <h2>Total: $ {this.state.total}</h2>
                 <StripeBtn amount={this.state.total} />
                 <br />
-                <div>
+                <div className="Cart_List_2">
                     {userCart}
                 </div>
 

@@ -35,8 +35,8 @@ module.exports = {
 
         dbInstance.update_product( //connected the sql file here
             [
-                req.params.id,
-                req.query.name
+                req.params.name,
+                req.body.price
             ])
             .then(() => res.sendStatus(200))
             .catch(err => {

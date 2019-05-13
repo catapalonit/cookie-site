@@ -25,10 +25,11 @@ export default class Login extends Component {
         const { username, password } = this.state;
         axios.post('api/adminLogin', { username, password }).then(res => {
             this.setState({ admin: true })
-        }).then(
+        }).catch(e => {
             axios.post("/api/login", { username, password }).then(res => {
                 this.setState({ redirect: true })
-            }))
+            })
+        })
     }
 
     handleEnter = e => {
