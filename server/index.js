@@ -7,6 +7,7 @@ const productsController = require('./controllers/productsController')
 const authController = require('./controllers/authController')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 const checkForSession = require('./middlewares/checkForSession')
+app.use(express.static(`${__dirname}/../build`));
 
 //AWS Amazon stuff
 const AWS = require('aws-sdk');
