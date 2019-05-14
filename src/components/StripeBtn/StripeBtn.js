@@ -30,6 +30,7 @@ const stripeBtn = (props) => {
             stripeKey={publishableKey} //this would change to the secretkey when putting stripe live
             token={onToken}
             zipCode
+            style={{ zIndex: '1' }}
         />
     );
 };
