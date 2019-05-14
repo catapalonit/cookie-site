@@ -1,11 +1,16 @@
-.register-page{
-    padding: 20px;
-    margin: 100px auto 300px auto;
-    background: rgb(236, 236, 236);
+%flex-basic {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+$card-background: rgb(236, 236, 236);
+
+.register-page{
+    @extend %flex-basic;
+    padding: 20px;
+    margin: 100px auto 300px auto;
+    background:$card-background;
+    flex-direction: column;
     width: 600px;
     height: 400px;
 }
@@ -15,7 +20,7 @@
     .register-page{
         padding: 20px;
         margin: 100px auto 300px auto;
-        background: rgb(236, 236, 236);
+        background: $card-background;
         display: flex;
         justify-content: center;
         align-items: center;

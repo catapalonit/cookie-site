@@ -1,11 +1,17 @@
+
+%flex-basic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .signout-page{
+    @extend %flex-basic;
     padding: 20px;
     margin: 100px auto 300px auto;
     background: rgb(236, 236, 236);
-    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     text-align: center;
     width: 600px;
     height: 400px;
@@ -16,15 +22,18 @@
 
 // at less than 750 px 
 @media (max-width: 750px) { /* WHEN SCREEN SMALL */
+    @mixin flex{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
     .signout-page{
+        @include flex;
         padding: 20px;
         margin: 100px auto 300px auto;
         background: rgb(236, 236, 236);
-        display: flex;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         width: 200px;
         height: 400px;
     }

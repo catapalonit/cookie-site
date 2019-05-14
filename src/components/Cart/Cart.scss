@@ -1,21 +1,21 @@
 
-
-
-
+%flex-basic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .Cart_List {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+   @extend %flex-basic;
     min-height: 83vh;
+    flex-direction: column;
+
 }
 .Cart_List_2 { 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-basic;
     flex-wrap: wrap;
+    flex-direction: row;
+
 }
 .Checkout-Page {
     display: flex;
