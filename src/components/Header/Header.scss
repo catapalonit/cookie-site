@@ -69,7 +69,6 @@
     display: flex;
     justify-content: center;
     animation: openMenu 1s;
-    // background: black; //DELETE THIS IS YOU MAKE THE BACKGROUND A COLOR -- background is in app.scss
     }
     .drop-down-closed {
     width: 100vw;
@@ -91,7 +90,6 @@
     }
     }
 
-
     @keyframes openMenu {
     from {
     transform: translateY(0vh);
@@ -100,15 +98,6 @@
     transform: translateY(2vh);
     }
     }
-    @keyframes closeMenu {
-    from {
-    transform: translateY(2vh);
-    }
-    to {
-    transform: translateY(0vh);
-    }
-    }
-    
     
     @media (min-width: 999px) { /* WHEN SCREEN BIG */
     ul {

@@ -13,7 +13,7 @@ const paymentApi = app => {
             timestamp: new Date().toISOString()
         });
     });
-    app.post("/payment", (req, res) => {
+    app.post("api/payment", (req, res) => {
         const body = {
             source: req.body.token.id,
             amount: req.body.amount,

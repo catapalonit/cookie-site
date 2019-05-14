@@ -71,7 +71,6 @@ app.post("/api/cart/:id", productsController.addToCart)
 app.get("/api/cart", productsController.getCart)
 
 
-
 //AWS STUFF
 
 // configure the keys for accessing AWS
@@ -133,7 +132,9 @@ app.post("/send", (req, res) => {
         subject: "A cookie user has sent you an email",
         html: `<b>
             user name = ${req.body.name}
+            <br />
             user email = ${req.body.email}
+            <br />
             Message from user = ${req.body.message}
             </b>`
     };
@@ -149,6 +150,7 @@ app.post("/send", (req, res) => {
 })
 
 configureRoutes(app);
+
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}.`);

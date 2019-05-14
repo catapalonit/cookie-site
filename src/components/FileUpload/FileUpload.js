@@ -81,7 +81,6 @@ export default class FileUpload extends Component {
     console.log(this.state.price)
   }
 
-
   render() {
     return (
       <div className="Admin-Page">

@@ -40,7 +40,7 @@ export default class Login extends Component {
 
     render() {
         if (this.state.admin === true) {
-            return <Redirect to='/FileUpload' />
+            return <Redirect admin={this.state.admin} to='/FileUpload' />
         }
         else if (this.state.redirect === true) {
             return <Redirect to='/' />

@@ -13,11 +13,9 @@ const stripeBtn = (props) => {
         axios.post("/payment", body)
             .then(response => {
                 console.log(response);
-                alert("Payment Success");
             })
             .catch(error => {
                 console.log("Payment Error: ", error);
-                alert("Payment Error");
             });
     };
     return (
@@ -29,7 +27,7 @@ const stripeBtn = (props) => {
             locale="auto"
             name="Stacy's Cookies"
             label="Checkout"
-            stripeKey={publishableKey}
+            stripeKey={publishableKey} //this would change to the secretkey when putting stripe live
             token={onToken}
             zipCode
         />
