@@ -64,6 +64,7 @@ app.post('/api/login', authController.loginUser)
 app.post('/api/adminLogin', authController.loginAdmin)
 app.post('/api/register', authController.registerUser)
 app.delete('/api/signout', authController.signout)
+
 app.get('/api/getSession', authController.getSession)
 
 
