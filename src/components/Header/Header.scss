@@ -49,7 +49,7 @@
     }
 
     
-    @media (max-width: 1000px) { /* WHEN SCREEN SMALL */
+    @media (max-width: 1025px) { /* WHEN SCREEN SMALL */
     .Menu-button {
     display: flex;
     align-items: center;
@@ -99,7 +99,7 @@
     }
     }
     
-    @media (min-width: 999px) { /* WHEN SCREEN BIG */
+    @media (min-width: 1025px) { /* WHEN SCREEN BIG */
     ul {
     display: flex;
     list-style-type: none;
