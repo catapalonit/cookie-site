@@ -7,9 +7,10 @@ const productsController = require('./controllers/productsController')
 const authController = require('./controllers/authController')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 const checkForSession = require('./middlewares/checkForSession')
+
+//used in stripe
 const cors = require("cors");
 app.use(cors());
-
 const configureRoutes = require("./routes")
 
 //AWS Amazon stuff
