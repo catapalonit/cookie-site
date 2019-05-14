@@ -7,7 +7,10 @@ const productsController = require('./controllers/productsController')
 const authController = require('./controllers/authController')
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 const checkForSession = require('./middlewares/checkForSession')
-app.use(express.static(`${__dirname}/../build`));
+const cors = require("cors");
+app.use(cors());
+
+const configureRoutes = require("./routes")
 
 //AWS Amazon stuff
 const AWS = require('aws-sdk');
@@ -22,6 +25,7 @@ const nodemailer = require('nodemailer');
 
 // Middleware
 
+app.use(express.static(`${__dirname}/../build`));
 app.use((req, res, next) => {
     console.log('request');
     next();
@@ -59,6 +63,8 @@ app.post('/api/login', authController.loginUser)
 app.post('/api/adminLogin', authController.loginAdmin)
 app.post('/api/register', authController.registerUser)
 app.delete('/api/signout', authController.signout)
+app.get('/api/getSession', authController.getSession)
+
 
 // Cart Endpoints
 app.post("/api/cart/:id", productsController.addToCart)
@@ -126,10 +132,10 @@ app.post("/send", (req, res) => {
         to: "stacyscookies123@gmail.com",
         subject: "A cookie user has sent you an email",
         html: `<b>
-        user name = ${req.body.name}
-        user email = ${req.body.email}
-        Message from user = ${req.body.message}
-        </b>`
+            user name = ${req.body.name}
+            user email = ${req.body.email}
+            Message from user = ${req.body.message}
+            </b>`
     };
 
     transporter.sendMail(mailOptions, function (err, res) {
@@ -142,7 +148,7 @@ app.post("/send", (req, res) => {
     res.sendStatus(200);
 })
 
-
+configureRoutes(app);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}.`);

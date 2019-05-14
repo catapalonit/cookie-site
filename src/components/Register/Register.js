@@ -52,13 +52,10 @@ class Register extends Component {
         }
     }
 
-
     render() {
         if (this.state.redirect) {
             return <Redirect to='/' />
         }
-
-
         return (
             <div className="register-page">
                 <h1>Register</h1>

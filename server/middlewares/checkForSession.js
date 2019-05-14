@@ -3,7 +3,7 @@ module.exports = function (req, res, next) {
 
     if (!session.user) {
         session.user = { username: "", email: "", cart: [], total: 0 };
-        console.log("SESSION*****", session.user);
+        console.log("SESSION*****");
 
     }
 
