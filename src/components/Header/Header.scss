@@ -19,6 +19,7 @@
     .Header {
     padding-bottom: 15vh;
     }
+
     .Menu-button {
     display: none;
     background: aqua;
@@ -65,11 +66,13 @@
     .drop-down-open {
     width: 100vw;
     position: absolute;
-    top: 9vh;
+    top: 8vh;
     left: 0px;
     display: flex;
     justify-content: center;
     animation: openMenu 1s;
+    background: rgb(56, 56, 56);
+    // height: 10vh;
     }
     .drop-down-closed {
     width: 100vw;
@@ -93,10 +96,10 @@
 
     @keyframes openMenu {
     from {
-    transform: translateY(0vh);
+    transform: translateY(-1vh);
     }
     to {
-    transform: translateY(2vh);
+    transform: translateY(0vh);
     }
     }
     
